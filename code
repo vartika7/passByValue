@@ -1,0 +1,47 @@
+package oops;
+
+public class PassByValue {
+	/*In any programming language, we pass parameters in functions, so we can pass the parameters in 2 ways,
+	  either, pass-by value, or pass-by reference.
+	  PASS BY VALUE-> The method parameter values are copied to another variable and then copied object is 
+	  passed, that's why it is called pass by value.
+	    //JAVA IS PASS BY VALUE.
+	  PASS BY REFERENCE- An alias or reference to the actual parameter is passed to the method, that's why
+	  it is called pass by reference.
+	  */
+	public static void main(String[] args) {
+		int c = 34;
+		int d = 67;
+		swap(c,d);
+		System.out.println(c + " "+ d);
+		
+		Dog y = new Dog();
+		y.legs = 3;
+		Dog z = new Dog();
+		z.legs = 4;
+		swap(y,z);
+		System.out.println(y.legs + " "+ z.legs);
+		
+		Dog g = new Dog();
+		g.legs = 4;
+		changeDog(g);
+		System.out.println(g.legs);
+	}
+	
+	static void swap(int a , int b) {  //In primitive data types, a new copy of variables is made and that is passed. 
+		int temp = a;
+		a = b;
+		b = temp;
+	}
+	static class Dog{
+		int legs; 
+	}
+	static void swap(Dog a, Dog b) {  //In non-primitive data types, the object's reference is passed. They are still pass-by value.
+		Dog temp = a;
+		a = b;
+		b = temp;
+	}
+	static void changeDog(Dog dog) {
+		dog.legs = 6;
+	}
+}
